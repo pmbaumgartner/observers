@@ -40,15 +40,15 @@ response = client.chat.completions.create(
 )
 ```
 
-### Observers
+## Observers
 
-#### Supported Observers
+### Supported Observers
 
 - [OpenAI](https://openai.com/) and every other LLM provider that implements the [OpenAI API message formate](https://platform.openai.com/docs/api-reference)
 
-### Stores
+## Stores
 
-#### Supported Stores
+### Supported Stores
 
 | Store | Annotate | Local | Free | UI filters | SQL filters |
 |-------|----------|-------|------|-------------|--------------|
@@ -56,15 +56,15 @@ response = client.chat.completions.create(
 | [DuckDB](https://duckdb.org/) | ❌ | ✅ | ✅ | ❌ | ✅ |
 | [Argilla](https://argilla.io/) | ✅ | ❌ | ✅ | ✅ | ❌ |
 
-#### Viewing / Querying
+### Viewing / Querying
 
-##### Hugging Face Datasets
+#### Hugging Face Datasets
 
 To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). From within here, you can query the dataset using SQL or using your own UI.
 
 ![Hugging Face Datasets Viewer](./assets/datasets.png)
 
-##### DuckDB Store
+#### DuckDB Store
 
 The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried using the [DuckDB CLI](https://duckdb.org/#quickinstall).
 
