@@ -1,6 +1,6 @@
-# 🤗🔭 Observers
-
 <div align="center">
+
+<h1>🤗🔭 Observers 🔭🤗</h1>
 
 A lightweight library for (generative) AI observability.
 
@@ -17,7 +17,7 @@ from observers.observers.models.openai import wrap_openai
 from observers.stores.duckdb import DuckDBStore
 from openai import OpenAI
 
-store = DuckDBStore().connect()
+store = DuckDBStore()
 
 api_key = os.environ["HF_TOKEN"]
 openai_client = OpenAI(
@@ -71,6 +71,10 @@ The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried
 │ 3 rows                                                                                                                16 columns (7 shown) │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
+
+#### Argilla Store
+
+The Argilla Store allows you to sync your observations to [Argilla](https://argilla.io/). To use it, you first need to create a [free Argilla deployment on Hugging Face](https://docs.argilla.io/latest/getting_started/quickstart/).
 
 ## Contributing
 

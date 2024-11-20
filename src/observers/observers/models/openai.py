@@ -8,6 +8,7 @@ from observers.stores.datasets import DatasetsStore
 from openai import OpenAI
 
 if TYPE_CHECKING:
+    from argilla import Argilla
     from observers.stores.duckdb import DuckDBStore
 
 
@@ -78,6 +79,79 @@ class OpenAIResponseRecord(Record):
             synced_at TIMESTAMP
         )
         """
+
+    def argilla_settings(self, client: "Argilla"):
+        import argilla as rg
+        from argilla import Settings
+
+        return Settings(
+            fields=[
+                rg.ChatField(
+                    name="messages",
+                    description="The messages sent to the assistant.",
+                    _client=client,
+                ),
+                rg.TextField(
+                    name="assistant_message",
+                    description="The response from the assistant.",
+                    required=False,
+                    client=client,
+                ),
+                rg.CustomField(
+                    name="tool_calls",
+                    template="{{ json record.fields.tool_calls }}",
+                    description="The tool calls made by the assistant.",
+                    required=False,
+                    _client=client,
+                ),
+                rg.CustomField(
+                    name="function_call",
+                    template="{{ json record.fields.function_call }}",
+                    description="The function call made by the assistant.",
+                    required=False,
+                    _client=client,
+                ),
+                rg.CustomField(
+                    name="properties",
+                    template="{{ json record.fields.properties }}",
+                    description="The properties associated with the response.",
+                    required=False,
+                    _client=client,
+                ),
+                rg.CustomField(
+                    name="raw_response",
+                    template="{{ json record.fields.raw_response }}",
+                    description="The raw response from the OpenAI API.",
+                    required=False,
+                    _client=client,
+                ),
+            ],
+            questions=[
+                rg.RatingQuestion(
+                    name="rating",
+                    description="How would you rate the response? 1 being the worst and 5 being the best.",
+                    values=[1, 2, 3, 4, 5],
+                ),
+                rg.TextQuestion(
+                    name="improved_response",
+                    description="If you would like to improve the response, please provide a better response here.",
+                    required=False,
+                ),
+                rg.TextQuestion(
+                    name="context",
+                    description="If you would like to provide more context for the response or rating, please provide it here.",
+                    required=False,
+                ),
+            ],
+            metadata=[
+                rg.IntegerMetadataProperty(name="completion_tokens", client=client),
+                rg.IntegerMetadataProperty(name="prompt_tokens", client=client),
+                rg.IntegerMetadataProperty(name="total_tokens", client=client),
+                rg.TermsMetadataProperty(name="model", client=client),
+                rg.TermsMetadataProperty(name="finish_reason", client=client),
+                rg.TermsMetadataProperty(name="tags", client=client),
+            ],
+        )
 
     @property
     def table_name(self):

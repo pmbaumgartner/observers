@@ -14,3 +14,13 @@ class Store(ABC):
     def add(self, record: Record):
         """Add a new record to the store"""
         pass
+
+    @abstractmethod
+    def connect(self):
+        """Connect to the store"""
+        pass
+
+    @abstractmethod
+    def _init_table(self, record: "Record"):
+        """Initialize the table"""
+        pass

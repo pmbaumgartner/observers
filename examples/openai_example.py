@@ -4,7 +4,7 @@ from observers.observers.models.openai import wrap_openai
 from observers.stores.duckdb import DuckDBStore
 from openai import OpenAI
 
-store = DuckDBStore().connect()
+store = DuckDBStore()
 
 api_key = os.environ["HF_TOKEN"]
 openai_client = OpenAI(
