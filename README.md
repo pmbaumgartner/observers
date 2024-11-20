@@ -6,6 +6,14 @@ A lightweight library for (generative) AI observability.
 
 </div>
 
+## Installation
+
+First things first! You can install the SDK with pip as follows:
+
+```bash
+pip install observers
+```
+
 ## Usage
 
 We differentiate between observers and stores. Observers wrap generative AI APIs (like OpenAI or llama-index) and track their interactions. Stores are classes that sync these observations to different storage backends (like duckdb or Hugging Face datasets).
