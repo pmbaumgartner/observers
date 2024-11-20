@@ -42,11 +42,11 @@ response = client.chat.completions.create(
 
 #### Supported Stores
 
-| Store | Annotate | Local | Free |
-|-------|----------|-------|------|
-| [Hugging Face Datasets](https://huggingface.co/docs/huggingface_hub/en/package_reference/io-management#datasets) | ❌ | ❌ | ✅ |
-| [DuckDB](https://duckdb.org/) | ❌ | ✅ | ✅ |
-| [Argilla](https://argilla.io/) | ✅ | ❌ | ✅ |
+| Store | Annotate | Local | Free | UI filters | SQL filters |
+|-------|----------|-------|------|-------------|--------------|
+| [Hugging Face Datasets](https://huggingface.co/docs/huggingface_hub/en/package_reference/io-management#datasets) | ❌ | ❌ | ✅ | ✅ | ✅ |
+| [DuckDB](https://duckdb.org/) | ❌ | ✅ | ✅ | ❌ | ✅ |
+| [Argilla](https://argilla.io/) | ✅ | ❌ | ✅ | ✅ | ❌ |
 
 #### Viewing / Querying
 
