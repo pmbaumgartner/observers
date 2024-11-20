@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
+
+if TYPE_CHECKING:
+    from argilla import Argilla
 
 
 @dataclass
@@ -31,4 +34,9 @@ class Record(ABC):
     @abstractmethod
     def table_name(self):
         """Return the DuckDB table name for the record"""
+        pass
+
+    @abstractmethod
+    def argilla_settings(self, client: "Argilla"):
+        """Return the Argilla settings for the record"""
         pass

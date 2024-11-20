@@ -2,7 +2,7 @@ from observers.observers.models.openai import wrap_openai
 from observers.stores.duckdb import DuckDBStore
 from openai import OpenAI
 
-store = DuckDBStore().connect()
+store = DuckDBStore()
 
 openai_client = OpenAI(
     base_url="http://localhost:11434/v1",
