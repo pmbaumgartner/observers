@@ -4,8 +4,8 @@ from observers.observers.models.openai import wrap_openai
 from observers.stores.argilla import ArgillaStore
 from openai import OpenAI
 
-api_url = "https://argilla-synthetic-data-generator-argilla-reviewer.hf.space/"
-api_key = "f_c6Kli8JQRkXaVpR4bFSPcE_XZF91gLOkTmE-wcqUlhRvPIfLKZiCE3YRv_IKgIHb7xRAXgPKn3EKRs3Ui17lWIHU6aynNfB3oTsSbVXMw"
+api_url = "<argilla-api-url>"
+api_key = "<argilla-api-key>"
 
 store = ArgillaStore(api_url=api_url, api_key=api_key)
 

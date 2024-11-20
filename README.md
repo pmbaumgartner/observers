@@ -22,17 +22,14 @@ We differentiate between observers and stores. Observers wrap generative AI APIs
 import os
 
 from observers.observers.models.openai import wrap_openai
-from observers.stores.duckdb import DuckDBStore
 from openai import OpenAI
-
-store = DuckDBStore()
 
 api_key = os.environ["HF_TOKEN"]
 openai_client = OpenAI(
     base_url="https://api-inference.huggingface.co/v1/", api_key=api_key
 )
 
-client = wrap_openai(openai_client, store=store)
+client = wrap_openai(openai_client)
 
 response = client.chat.completions.create(
     model="Qwen/Qwen2.5-Coder-32B-Instruct",
@@ -45,6 +42,10 @@ response = client.chat.completions.create(
 ### Supported Observers
 
 - [OpenAI](https://openai.com/) and every other LLM provider that implements the [OpenAI API message formate](https://platform.openai.com/docs/api-reference)
+
+### Change OpenAI compliant LLM provider
+
+The `wrap_openai` function allows you to wrap any OpenAI compliant LLM provider. Take a look at [the example doing this for Ollama](./examples/ollama_example.py) for more details.
 
 ## Stores
 
@@ -66,7 +67,7 @@ To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets 
 
 #### DuckDB Store
 
-The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried using the [DuckDB CLI](https://duckdb.org/#quickinstall).
+The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried using the [DuckDB CLI](https://duckdb.org/#quickinstall). Take a look at [the example](./examples/duckdb_example.py) for more details.
 
 ```bash
 > duckdb store.db
@@ -85,7 +86,7 @@ The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried
 
 #### Argilla Store
 
-The Argilla Store allows you to sync your observations to [Argilla](https://argilla.io/). To use it, you first need to create a [free Argilla deployment on Hugging Face](https://docs.argilla.io/latest/getting_started/quickstart/).
+The Argilla Store allows you to sync your observations to [Argilla](https://argilla.io/). To use it, you first need to create a [free Argilla deployment on Hugging Face](https://docs.argilla.io/latest/getting_started/quickstart/). Take a look at [the example](./examples/argilla_example.py) for more details.
 
 ![Argilla Store](./assets/argilla.png)
 
