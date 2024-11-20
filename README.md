@@ -51,7 +51,7 @@ response = client.chat.completions.create(
 
 To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). From within here, you can query the dataset using SQL or using your own UI.
 
-![Hugging Face Datasets Viewer](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hub/dataset-viewer.png)
+![Hugging Face Datasets Viewer](./assets/datasets.png)
 
 ##### DuckDB Store
 
@@ -75,6 +75,8 @@ The default store is [DuckDB](https://duckdb.org/) and can be viewed and queried
 #### Argilla Store
 
 The Argilla Store allows you to sync your observations to [Argilla](https://argilla.io/). To use it, you first need to create a [free Argilla deployment on Hugging Face](https://docs.argilla.io/latest/getting_started/quickstart/).
+
+![Argilla Store](./assets/argilla.png)
 
 ## Contributing
 
