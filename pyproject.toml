@@ -1,6 +1,6 @@
 [project]
 name = "observers"
-version = "0.1.1"
+version = "0.1.2"
 description = "🤗 Observers: A lightweight library for (generative) AI observability, enabling insights into model interactions and everything that comes with it."
 authors = [
     {name = "davidberenstein1957", email = "david.m.berenstein@gmail.com"},
@@ -23,11 +23,10 @@ readme = "README.md"
 license = {text = "Apache 2"}
 
 dependencies = [
-    "duckdb>=1.1.3",
-    "datasets>=3.1.0",
-    "openai>=1.54.5",
-    "litellm>=1.52.10",
-    "llama-index>=0.12.0",
+    "duckdb>=1.0.0",
+    "datasets>=3.0.0",
+    "openai>=1.50.0",
+    "litellm>=1.50.0",
     "argilla>=2.0.0",
 ]
 

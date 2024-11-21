@@ -54,13 +54,13 @@ class DuckDBStore(Store):
         record_dict = asdict(record)
         record_dict["synced_at"] = None
 
-        for json_field in record.json_fields():
+        for json_field in record.json_fields:
             if record_dict[json_field]:
                 record_dict[json_field] = json.dumps(record_dict[json_field])
 
         placeholders = ", ".join(["$" + str(i + 1) for i in range(len(record_dict))])
         self._conn.execute(
-            f"INSERT INTO {record.table_name()} VALUES ({placeholders})",
+            f"INSERT INTO {record.table_name} VALUES ({placeholders})",
             [record_dict[k] for k in record_dict.keys()],
         )
 

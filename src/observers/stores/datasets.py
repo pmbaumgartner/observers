@@ -5,7 +5,7 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from typing import List, Optional
 
-from huggingface_hub import CommitScheduler, login, whoami
+from huggingface_hub import CommitScheduler, login, metadata_update, whoami
 
 from observers.stores.base import Store
 
@@ -58,6 +58,12 @@ class DatasetsStore(Store):
             ignore_patterns=self.ignore_patterns,
             squash_history=self.squash_history,
         )
+        metadata_update(
+            repo_id=repo_id,
+            metadata={"tags": ["observers"]},
+            repo_type="dataset",
+        )
+
         atexit.register(self._scheduler.push_to_hub)
 
     @classmethod
