@@ -2,7 +2,7 @@
 
 <h1>🤗🔭 Observers 🔭🤗</h1>
 
-A lightweight library for (generative) AI observability.
+A Lightweight Library for AI Observability
 
 </div>
 
