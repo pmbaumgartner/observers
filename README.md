@@ -51,17 +51,17 @@ The `wrap_openai` function allows you to wrap any OpenAI compliant LLM provider.
 
 ### Supported Stores
 
-| Store | Annotate | Local | Free | UI filters | SQL filters |
-|-------|----------|-------|------|-------------|--------------|
-| [Hugging Face Datasets](https://huggingface.co/docs/huggingface_hub/en/package_reference/io-management#datasets) | ❌ | ❌ | ✅ | ✅ | ✅ |
-| [DuckDB](https://duckdb.org/) | ❌ | ✅ | ✅ | ❌ | ✅ |
-| [Argilla](https://argilla.io/) | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Store | Example | Annotate | Local | Free | UI filters | SQL filters |
+|-------|---------|----------|-------|------|-------------|--------------|
+| [Hugging Face Datasets](https://huggingface.co/docs/huggingface_hub/en/package_reference/io-management#datasets) | [example](./examples/datasets_example.py) | ❌ | ❌ | ✅ | ✅ | ✅ |
+| [DuckDB](https://duckdb.org/) | [example](./examples/ollama_example.py) | ❌ | ✅ | ✅ | ❌ | ✅ |
+| [Argilla](https://argilla.io/) | [example](./examples/argilla_example.py) | ✅ | ❌ | ✅ | ✅ | ❌ |
 
 ### Viewing / Querying
 
-#### Hugging Face Datasets
+#### Hugging Face Datasets Store
 
-To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). From within here, you can query the dataset using SQL or using your own UI.
+To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). From within here, you can query the dataset using SQL or using your own UI. Take a look at [the example](./examples/datasets_example.py) for more details.
 
 ![Hugging Face Datasets Viewer](./assets/datasets.png)
 
