@@ -1,6 +1,7 @@
 import atexit
 import json
 import os
+import uuid
 from dataclasses import asdict, dataclass, field
 from typing import List, Optional
 
@@ -29,6 +30,7 @@ class DatasetsStore(Store):
     ignore_patterns: Optional[List[str]] = field(default=None)
     squash_history: Optional[bool] = field(default=None)
 
+    _filename: Optional[str] = field(default=None)
     _scheduler: Optional[CommitScheduler] = None
 
     def __post_init__(self):
@@ -42,6 +44,7 @@ class DatasetsStore(Store):
         repo_name = self.repo_name or record.table_name
         org_name = self.org_name or whoami(token=self.token)["name"]
         repo_id = f"{org_name}/{repo_name}"
+        self._filename = f"{record.table_name}_{uuid.uuid4()}.json"
         self._scheduler = CommitScheduler(
             repo_id=repo_id,
             folder_path=self.folder_path or DEFAULT_DATA_FOLDER,
@@ -93,9 +96,7 @@ class DatasetsStore(Store):
             self._init_table(record)
 
         with self._scheduler.lock:
-            with (self._scheduler.folder_path / f"data_{record.table_name}.json").open(
-                "a"
-            ) as f:
+            with (self._scheduler.folder_path / self._filename).open("a") as f:
                 record_dict = asdict(record)
                 record_dict["synced_at"] = None
 
