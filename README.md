@@ -2,7 +2,7 @@
 
 <h1>🤗🔭 Observers 🔭🤗</h1>
 
-A Lightweight Library for AI Observability
+<h3 align="center">A Lightweight Library for AI Observability</h3>
 
 </div>
 
