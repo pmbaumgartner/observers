@@ -18,7 +18,9 @@ pip install observers
 
 ## Usage
 
-We differentiate between observers and stores. Observers wrap generative AI APIs (like OpenAI or llama-index) and track their interactions. Stores are classes that sync these observations to different storage backends (like duckdb or Hugging Face datasets).
+We differentiate between observers and stores. Observers wrap generative AI APIs (like OpenAI or llama-index) and track their interactions. Stores are classes that sync these observations to different storage backends (like DuckDB or Hugging Face datasets).
+
+To get started quickly, you can run the code below. This will send requests to a HF serverless endpoint and log the interactions into a Hub dataset, using the default store `DatasetsStore`. You can find this dataset under your your personal workspace (http://hf.co/{your_username}). To select and configure your stores, keep reading! 
 
 ```python
 import os
