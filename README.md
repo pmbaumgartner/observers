@@ -63,7 +63,7 @@ The `wrap_openai` function allows you to wrap any OpenAI compliant LLM provider.
 
 #### Hugging Face Datasets Store
 
-To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). From within here, you can query the dataset using SQL or using your own UI. Take a look at [the example](./examples/datasets_example.py) for more details.
+To view and query Hugging Face Datasets, you can use the [Hugging Face Datasets Viewer](https://huggingface.co/docs/hub/en/datasets-viewer). You can [find example datasets on the Hugging Face Hub](https://huggingface.co/datasets?other=observers). From within here, you can query the dataset using SQL or using your own UI. Take a look at [the example](./examples/datasets_example.py) for more details.
 
 ![Hugging Face Datasets Viewer](./assets/datasets.png)
 
