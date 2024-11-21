@@ -6,6 +6,8 @@ A lightweight library for (generative) AI observability.
 
 </div>
 
+![Observers Logo](./assets/observers.png)
+
 ## Installation
 
 First things first! You can install the SDK with pip as follows:
