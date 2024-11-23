@@ -4,6 +4,7 @@ from openai import OpenAI
 
 store = DuckDBStore()
 
+# Ollama is running locally at http://localhost:11434/v1
 openai_client = OpenAI(
     base_url="http://localhost:11434/v1",
 )
