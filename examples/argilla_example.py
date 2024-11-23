@@ -1,5 +1,3 @@
-import os
-
 from observers.observers.models.openai import wrap_openai
 from observers.stores.argilla import ArgillaStore
 from openai import OpenAI
@@ -9,14 +7,13 @@ api_key = "<argilla-api-key>"
 
 store = ArgillaStore(api_url=api_url, api_key=api_key)
 
-api_key = os.environ["HF_TOKEN"]
-openai_client = OpenAI(
-    base_url="https://api-inference.huggingface.co/v1/", api_key=api_key
-)
+openai_client = OpenAI()
 
 client = wrap_openai(openai_client, store=store)
 
 response = client.chat.completions.create(
-    model="Qwen/Qwen2.5-Coder-32B-Instruct",
+    model="gpt-4o",
     messages=[{"role": "user", "content": "Tell me a joke."}],
 )
+
+print(response.choices[0].message.content)
