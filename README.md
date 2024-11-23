@@ -21,20 +21,17 @@ pip install observers
 We differentiate between observers and stores. Observers wrap generative AI APIs (like OpenAI or llama-index) and track their interactions. Stores are classes that sync these observations to different storage backends (like duckdb or Hugging Face datasets).
 
 ```python
-import os
-
 from observers.observers.models.openai import wrap_openai
+from observers.stores.duckdb import DuckDBStore
 from openai import OpenAI
 
-api_key = os.environ["HF_TOKEN"]
-openai_client = OpenAI(
-    base_url="https://api-inference.huggingface.co/v1/", api_key=api_key
-)
+store = DuckDBStore()
 
-client = wrap_openai(openai_client)
+openai_client = OpenAI()
+client = wrap_openai(openai_client, store=store)
 
 response = client.chat.completions.create(
-    model="Qwen/Qwen2.5-Coder-32B-Instruct",
+    model="gpt-4o",
     messages=[{"role": "user", "content": "Tell me a joke."}],
 )
 ```
@@ -56,7 +53,7 @@ The `wrap_openai` function allows you to wrap any OpenAI compliant LLM provider.
 | Store | Example | Annotate | Local | Free | UI filters | SQL filters |
 |-------|---------|----------|-------|------|-------------|--------------|
 | [Hugging Face Datasets](https://huggingface.co/docs/huggingface_hub/en/package_reference/io-management#datasets) | [example](./examples/datasets_example.py) | ❌ | ❌ | ✅ | ✅ | ✅ |
-| [DuckDB](https://duckdb.org/) | [example](./examples/ollama_example.py) | ❌ | ✅ | ✅ | ❌ | ✅ |
+| [DuckDB](https://duckdb.org/) | [example](./examples/duckdb_example.py.py) | ❌ | ✅ | ✅ | ❌ | ✅ |
 | [Argilla](https://argilla.io/) | [example](./examples/argilla_example.py) | ✅ | ❌ | ✅ | ✅ | ❌ |
 
 ### Viewing / Querying
