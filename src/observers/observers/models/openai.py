@@ -46,7 +46,7 @@ class OpenAIResponseRecord(Record):
         usage = dump.get("usage", {})
 
         return cls(
-            observer_uuid=str(uuid.uuid4()),
+            observers_uuid=str(uuid.uuid4()),
             id=dump.get("id"),
             completion_tokens=usage.get("completion_tokens"),
             prompt_tokens=usage.get("prompt_tokens"),
