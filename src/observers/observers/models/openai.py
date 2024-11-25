@@ -18,7 +18,8 @@ class OpenAIResponseRecord(Record):
     Data class for storing OpenAI API response information
     """
 
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    observers_uuid: str = field(default_factory=lambda: str(uuid.uuid4()))
+    id: Optional[str] = None
     model: str = None
     timestamp: str = field(default_factory=lambda: datetime.datetime.now().isoformat())
     messages: List[Message] = None
@@ -45,7 +46,8 @@ class OpenAIResponseRecord(Record):
         usage = dump.get("usage", {})
 
         return cls(
-            id=response.id if response.id else str(uuid.uuid4()),
+            observer_uuid=str(uuid.uuid4()),
+            id=dump.get("id"),
             completion_tokens=usage.get("completion_tokens"),
             prompt_tokens=usage.get("prompt_tokens"),
             total_tokens=usage.get("total_tokens"),
@@ -61,7 +63,8 @@ class OpenAIResponseRecord(Record):
     def duckdb_schema(self):
         return f"""
         CREATE TABLE IF NOT EXISTS {self.table_name} (
-            id VARCHAR PRIMARY KEY,
+            observers_uuid VARCHAR PRIMARY KEY,
+            id VARCHAR,
             model VARCHAR,
             timestamp TIMESTAMP,
             messages STRUCT(role VARCHAR, content VARCHAR)[],
